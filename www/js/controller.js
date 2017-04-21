@@ -20,9 +20,10 @@ angular.module('starter.controllers', ['starter.photoProvider'])
 
 			}
 			*/
-			for (var i = 0; i < $scope.photos.photos.length ; i++){
-				images.push($scope.photos.photos[i].previewUrl);
-				thumbnails.push($scope.photos.photos[i].thumbnailUrl);
+			var pictures = $scope.getPictures();
+			for (var i = 0; i < pictures.photos.length ; i++){
+				images.push(pictures.photos[i].previewUrl);
+				thumbnails.push(pictures.photos[i].thumbnailUrl);
 			}
 
 			var options = {
@@ -107,7 +108,9 @@ angular.module('starter.controllers', ['starter.photoProvider'])
 		}
 		
 
-		$scope.photos = {
+	$scope.getPictures = function (){
+
+		return {
 			"photos": [
 			{
 				"previewUrl":"http://farm4.static.flickr.com/3779/9522424255_28a5a9d99c_b.jpg",
@@ -858,6 +861,7 @@ angular.module('starter.controllers', ['starter.photoProvider'])
 				"thumbnailUrl":"http://farm2.static.flickr.com/1235/1010416375_fe91e5ce22_q.jpg"
 			},
 			]
-		}
-	})
+		};
+	}
+})
 
